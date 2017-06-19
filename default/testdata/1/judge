@@ -34,11 +34,11 @@ def build():
 	while True:
 		if lid == 1:
 			os.rename('source', 'a.c')
-			if os.system(T % 'gcc -std=c99 -O2 a.c -lm') != 0: break
+			if os.system(T % 'timeout 10 gcc -std=c99 -O2 a.c -lm') != 0: break
 			assert os.system('mv a.out /sandbox/sandbox/app') == 0
 		elif lid == 2:
 			os.rename('source', 'a.cpp')
-			if os.system(T % 'g++ -std=c++98 -O2 a.cpp -lm') != 0: break
+			if os.system(T % 'timeout 10 g++ -std=c++98 -O2 a.cpp -lm') != 0: break
 			assert os.system('mv a.out /sandbox/sandbox/app') == 0
 		elif lid == 3:
 			os.rename('source', 'a.cs')
